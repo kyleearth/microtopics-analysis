@@ -37,7 +37,7 @@ log = logging.getLogger(__name__)
 # When running without a YAML config, these values are used.
 
 DEFAULTS: dict[str, Any] = {
-    "text_column": "clean_merged_text",
+    "text_column": "record.media.merge.clean",
     "n_keywords": 10,
     "sample_size": 100,
     "max_tokens": 256,
