@@ -147,7 +147,7 @@ python -m microtopics.clustering \
 
 Writes a labelled parquet (`config_XXXX.parquet`) alongside the metrics JSON.
 
-### Stage 3 — Summarisation
+### Stage 3 — Summarization
 
 ```bash
 python -m microtopics.summarization \
