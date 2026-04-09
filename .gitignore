@@ -1,0 +1,37 @@
+# ── Shell scripts (excluded globally) ────────────────────────────────────────
+*.sh
+
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+.eggs/
+
+# ── Jupyter Notebooks ────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── Virtual environments ─────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── IDE / editor ─────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── OS artefacts ─────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Directories kept empty via nested .gitignore files ───────────────────────
+# configs/   → configs/.gitignore
+# logs/      → logs/.gitignore
+# slurm_scripts/ → slurm_scripts/.gitignore
+# data/      → data/.gitignore
