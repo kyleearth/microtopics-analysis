@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this script, please cite it as below."
+title: "Microtopics Discovery Pipeline"
+version: 1.0.0
+date-released: 2026-04-09
+url: "https://github.com/alesalloum/microtopics-analysis"
+repository-code: "https://github.com/alesalloum/microtopics-analysis"
+authors:
+  - orcid: "https://orcid.org/0000-0002-2381-6876" 
+
+abstract: >-
+  A fully data-driven pipeline for finding microtopics in text data. 
+  It embeds, clusters, and summarizes the clusters, providing diagnostics 
+  and optimization for optimal parameters. Designed for GPU-accelerated analysis in HPC environments.
+keywords:
+  - nlp
+  - clustering
+  - embeddings
+  - microtopics
+  - machine-learning
+license: Apache-2.0
+
+preferred-citation:
+  type: article
+  authors:
+    - orcid: "https://orcid.org/0000-0002-2381-6876"
+  title: "Politics and polarization on Bluesky"
+  year: 2025
+  journal: "arXiv preprint" 
+  identifiers:
+    - type: doi
+      value: "10.48550/arXiv.2506.03443"
