@@ -4,7 +4,7 @@ A data-driven pipeline for discovering fine-grained **microtopics** in large
 text corpora.  It embeds text into dense vectors, clusters the embedding space
 on the GPU, and generates human-readable labels for every discovered topic.
 
-The pipeline is designed for HPC environments (SLURM) and scales to tens of
+The pipeline is designed for HPC environments (e.g., SLURM) and scales to tens of
 millions of documents by sharding and leveraging NVIDIA RAPIDS for
 GPU-accelerated dimensionality reduction and clustering.
 
@@ -13,14 +13,14 @@ GPU-accelerated dimensionality reduction and clustering.
 ## Pipeline Architecture
 
 ```text
-┌─────────────┐     ┌──────────────┐     ┌───────────────┐
-│  Stage 1     │     │  Stage 2      │     │  Stage 3       │
-│  Embed       │────▶│  Cluster      │────▶│  Summarize     │
-│              │     │               │     │                │
-│ Sentence-    │     │ UMAP (cuML)   │     │ CountVectorizer│
-│ Transformer  │     │ + HDBSCAN     │     │ + vLLM (LLM)   │
+┌──────────────┐     ┌───────────────┐     ┌─────────────────┐
+│  Stage 1     │     │  Stage 2      │     │  Stage 3        │
+│  Embed       │────▶│  Cluster      │────▶│  Summarize      │ 
+│              │     │               │     │                 │
+│ Sentence-    │     │ UMAP (cuML)   │     │ CountVectorizer │
+│ Transformer  │     │ + HDBSCAN     │     │ + vLLM (LLM)    │
 │ → parquet    │     │ → labels JSON │     │ → analysis JSON │
-└─────────────┘     └──────────────┘     └───────────────┘
+└──────────────┘     └───────────────┘     └─────────────────┘
 ```
 
 | Stage | Input | Output | Script |
@@ -81,8 +81,7 @@ microtopics-analysis/
 
 ## Diagnostics & Hyperparameter Tuning
 
-The clustering stage supports automatic hyperparameter exploration via SLURM
-array jobs.  Each array task receives a different `config_id`, which seeds a
+The clustering stage supports automatic hyperparameter exploration via array jobs.  Each array task receives a different `config_id`, which seeds a
 deterministic RNG that samples one value per grid axis:
 
 | Parameter | Default Candidates |
@@ -102,7 +101,7 @@ jupyter notebook notebooks/clustering_diagnostics.ipynb
 ```
 
 Set `OUTPUT_DIR` to the directory containing the `config_*.json` files and
-re-run all cells.  The notebook highlights optimal parameter ranges and
+re-run all cells.  The notebook checks optimal parameter ranges and
 trade-offs between cluster count, silhouette score, and noise ratio.
 
 ---
